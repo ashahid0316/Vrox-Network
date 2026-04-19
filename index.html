@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VROX Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Inter:wght@400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: #0B0817;
+        color: #FFFFFF;
+        line-height: 1.6;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #0B0817;
+        color: #FFFFFF;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      button,
+      a {
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+
+      .page-shell {
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .page-shell::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 20% 10%, rgba(0, 217, 192, 0.18) 0, transparent 18%),
+          radial-gradient(circle at 80% 15%, rgba(74, 222, 128, 0.14) 0, transparent 15%),
+          radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.08) 0, transparent 25%);
+        opacity: 0.65;
+        pointer-events: none;
+      }
+
+      .page-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .nav-bar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        padding: 0 24px;
+        transition: background 0.3s ease, border-bottom 0.3s ease, backdrop-filter 0.3s ease;
+      }
+
+      .nav-bar.scrolled {
+        background: rgba(11, 8, 23, 0.92);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .nav-brand img {
+        height: 40px;
+        width: auto;
+      }
+
+      .nav-brand span {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.95rem;
+        letter-spacing: 0.18em;
+      }
+
+      .nav-links {
+        display: none;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav-links button,
+      .nav-links a {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #9B9B9B;
+        background: transparent;
+        padding: 4px 0;
+        position: relative;
+      }
+
+      .nav-links button:hover,
+      .nav-links a:hover {
+        color: #00D9C0;
+      }
+
+      .nav-links button.active::after,
+      .nav-links a.active::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 2px;
+        background: #00D9C0;
+      }
+
+      .nav-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #4ADE80 0%, #00D9C0 100%);
+        color: #0B0817;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 30px;
+      }
+
+      .mobile-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: #FFFFFF;
+        border-radius: 999px;
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 950;
+        background: rgba(11, 8, 23, 0.98);
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-menu button {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+
+      .hero-section {
+        position: relative;
+        min-height: 100vh;
+        padding: 140px 0 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 960px;
+        padding: 0 12px;
+      }
+
+      .hero-title {
+        margin: 0;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        font-size: clamp(4rem, 9vw, 8rem);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+      }
+
+      .hero-title span {
+        display: inline-block;
+        transform-style: preserve-3d;
+      }
+
+      .hero-subtitle,
+      .hero-tagline {
+        margin: 24px auto 0;
+        max-width: 700px;
+      }
+
+      .hero-subtitle {
+        font-family: 'Inter', sans-serif;
+        color: #00D9C0;
+        font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-tagline {
+        color: #9B9B9B;
+        font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+      }
+
+      .hero-cta {
+        margin: 36px auto 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 36px;
+        border-radius: 24px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #4ADE80 0%, #00D9C0 100%);
+        color: #0B0817;
+        box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
+      }
+
+      .hero-cta:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-highlights {
+        margin: 28px auto 0;
+        padding: 24px;
+        max-width: 720px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 28px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .hero-highlight {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      @media (max-width: 767px) {
+        .hero-highlights {
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+      }
+
+      .highlight-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #00D9C0;
+      }
+
+      .highlight-text {
+        margin: 0;
+        color: #D1D5DB;
+        font-size: 0.98rem;
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        left: 50%;
+        bottom: 32px;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        opacity: 1;
+        transition: opacity 0.4s ease;
+      }
+
+      .scroll-indicator.hidden {
+        opacity: 0;
+      }
+
+      .scroll-indicator-line {
+        width: 1px;
+        height: 60px;
+        background: rgba(255,255,255,0.24);
+      }
+
+      .scroll-indicator-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.7);
+        animation: pulse-scroll 2s infinite ease-in-out;
+      }
+
+      @keyframes pulse-scroll {
+        0%, 100% { opacity: 0.35; }
+        50% { opacity: 1; }
+      }
+
+      .section {
+        position: relative;
+        padding: 120px 0;
+      }
+
+      .section.dark {
+        background: #0B0817;
+      }
+
+      .section-alt {
+        background: linear-gradient(180deg, #0B0817 0%, #130D2A 100%);
+      }
+
+      .section-label {
+        margin: 0 0 18px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #00D9C0;
+      }
+
+      .section-title {
+        margin: 0;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        letter-spacing: -0.02em;
+      }
+
+      .section-copy {
+        margin-top: 24px;
+        max-width: 700px;
+        color: #9B9B9B;
+        font-size: 1rem;
+      }
+
+      .feature-grid,
+      .roadmap-grid {
+        display: grid;
+        gap: 28px;
+        margin-top: 56px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .feature-card {
+        padding: 32px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .feature-card:hover {
+        border-color: rgba(0, 217, 192, 0.25);
+        transform: translateY(-6px);
+      }
+
+      .feature-card-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .feature-card-label {
+        margin: 20px 0 10px;
+        display: inline-block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .feature-card-title {
+        margin: 0;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.4rem;
+      }
+
+      .feature-card-text {
+        margin-top: 14px;
+        color: #9B9B9B;
+        font-size: 0.98rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 40px;
+      }
+
+      .stat-card {
+        padding: 34px 28px;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        text-align: center;
+      }
+
+      .stat-number {
+        position: relative;
+        font-family: 'DM Sans', sans-serif;
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin: 0;
+      }
+
+      .stat-number::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent 30%, rgba(74, 222, 128, 0.25) 50%, transparent 70%);
+        opacity: 0.85;
+        mix-blend-mode: screen;
+        pointer-events: none;
+      }
+
+      .stat-label {
+        display: block;
+        margin-top: 18px;
+        color: #9B9B9B;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .roadmap-grid {
+        grid-template-columns: 1fr;
+        position: relative;
+      }
+
+      .roadmap-line {
+        position: absolute;
+        left: 22px;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: rgba(0, 217, 192, 0.24);
+      }
+
+      .roadmap-item {
+        position: relative;
+        padding-left: 60px;
+      }
+
+      .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: 18px;
+        top: 10px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #00D9C0;
+        box-shadow: 0 0 18px rgba(0, 217, 192, 0.4);
+      }
+
+      .roadmap-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: #00D9C0;
+        color: #0B0817;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .roadmap-title {
+        margin: 16px 0 10px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.45rem;
+      }
+
+      .roadmap-text {
+        margin: 0;
+        color: #9B9B9B;
+        font-size: 1rem;
+        max-width: 540px;
+      }
+
+      .roadmap-text ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .roadmap-text li {
+        margin-bottom: 8px;
+        padding-left: 16px;
+        position: relative;
+      }
+
+      .roadmap-text li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: #00D9C0;
+      }
+
+      .footer {
+        padding: 80px 0 40px;
+        background: #080614;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        width: 100%;
+      }
+
+      .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .footer-brand img {
+        height: 40px;
+        width: auto;
+      }
+
+      .footer-brand span {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.1rem;
+        letter-spacing: 0.15em;
+        color: #FFFFFF;
+      }
+
+      .footer-description {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .footer-title {
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #FFFFFF;
+        margin: 0 0 12px;
+        letter-spacing: 0.02em;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .footer-links li {
+        margin: 0;
+      }
+
+      .footer-links a {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer-links a:hover {
+        color: #00D9C0;
+      }
+
+      .social-buttons {
+        display: flex;
+        gap: 12px;
+      }
+
+      .social-button {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .social-button:hover {
+        background: rgba(0, 217, 192, 0.12);
+        transform: translateY(-2px);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.06);
+        padding-top: 24px;
+        text-align: center;
+      }
+
+      .footer-copy {
+        margin: 0;
+        color: rgba(255,255,255,0.35);
+        font-size: 0.9rem;
+      }
+
+      @media (min-width: 768px) {
+        .nav-links {
+          display: flex;
+        }
+
+        .mobile-toggle {
+          display: none;
+        }
+
+        .hero-section {
+          padding-top: 160px;
+        }
+
+        .feature-grid,
+        .stats-grid,
+        .roadmap-grid {
+          gap: 32px;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .roadmap-item {
+          padding-left: 90px;
+        }
+
+        .roadmap-line {
+          left: 33px;
+        }
+
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 48px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .page-container {
+          padding: 0 32px;
+        }
+
+        .hero-title {
+          font-size: clamp(5.5rem, 8vw, 9rem);
+        }
+
+        .footer-grid {
+          grid-template-columns: 2fr 1fr 1fr 1fr;
+          gap: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <nav class="nav-bar" id="site-nav">
+        <div class="nav-brand">
+          <img src="public/assets/logo-vrox.png" alt="VROX Network" />
+          <span>VROX</span>
+        </div>
+        <div class="nav-links" id="desktop-nav">
+          <button data-target="#top">Home</button>
+          <button data-target="#about">Mine</button>
+          <button data-target="#features">Whitepaper</button>
+          <button data-target="#roadmap">Roadmap</button>
+          <a href="/knowledge-hub/">Learn</a>
+          <a href="/updates/">Updates</a>
+          <a href="/support/">Support</a>
+          <a href="/download/" class="nav-action">Download App</a>
+        </div>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <div class="mobile-menu" id="mobile-menu">
+        <button data-target="#top">Home</button>
+        <button data-target="#about">Mine</button>
+        <button data-target="#features">Whitepaper</button>
+        <button data-target="#roadmap">Roadmap</button>
+        <a href="/knowledge-hub/">Learn</a>
+        <a href="/updates/">Updates</a>
+        <a href="/support/">Support</a>
+        <a href="/download/" class="nav-action">Download App</a>
+      </div>
+
+      <main class="page-container">
+        <section id="top" class="hero-section">
+          <div class="hero-inner">
+            <h1 class="hero-title">
+              <span>V</span><span>R</span><span>O</span><span>X</span><br />
+              <span>N</span><span>E</span><span>T</span><span>W</span><span>O</span><span>R</span><span>K</span>
+            </h1>
+            <p class="hero-subtitle">Empowering the Decentralized Future</p>
+            <p class="hero-tagline">Secure. Transparent. Community-driven. Be an early adopter.</p>
+            <button class="hero-cta" id="hero-cta">Download &amp; Start Mining</button>
+            <div class="hero-highlights">
+              <div class="hero-highlight">
+                <span class="highlight-tag">Official Launch</span>
+                <p class="highlight-text">Phase 1 is live now with mining access and community onboarding.</p>
+              </div>
+              <div class="hero-highlight">
+                <span class="highlight-tag">App Release</span>
+                <p class="highlight-text">Android app ready for download via Google Play.</p>
+              </div>
+              <div class="hero-highlight">
+                <span class="highlight-tag">Cloud Mining</span>
+                <p class="highlight-text">Mine VROX from your mobile device with seamless cloud integration.</p>
+              </div>
+              <div class="hero-highlight">
+                <span class="highlight-tag">Community Growth</span>
+                <p class="highlight-text">Join a secure, decentralized ecosystem with early adopter momentum.</p>
+              </div>
+            </div>
+          </div>
+          <div class="scroll-indicator" id="scroll-indicator">
+            <div class="scroll-indicator-line"></div>
+            <div class="scroll-indicator-dot"></div>
+          </div>
+        </section>
+
+        <section id="about" class="section dark">
+          <div class="section-label">// ABOUT VROX</div>
+          <h2 class="section-title">Join the Movement: Phase 1 is Live!</h2>
+          <p class="section-copy">
+            VROX Network is more than just an app; it is an ecosystem built on the principles of decentralization and security.
+            Our current mission is to establish a massive, active community through our native mining platform. Every miner strengthens the network.
+            Every participant shapes the future.
+          </p>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <img class="feature-card-icon" src="public/assets/icon-pickaxe.png" alt="Active Mining" />
+              <span class="feature-card-label">Active Mining</span>
+              <h3 class="feature-card-title">Start earning VROX tokens today</h3>
+              <p class="feature-card-text">Mine directly from your device with a secure and transparent reward system.</p>
+            </article>
+            <article class="feature-card">
+              <img class="feature-card-icon" src="public/assets/icon-shield.png" alt="Security First" />
+              <span class="feature-card-label">Security First</span>
+              <h3 class="feature-card-title">Decentralized &amp; encrypted</h3>
+              <p class="feature-card-text">Protect your data and tokens with a network designed to resist compromise.</p>
+            </article>
+            <article class="feature-card">
+              <img class="feature-card-icon" src="public/assets/icon-users.png" alt="Community Growth" />
+              <span class="feature-card-label">Community Growth</span>
+              <h3 class="feature-card-title">Join thousands of miners worldwide</h3>
+              <p class="feature-card-text">Help build a global decentralized ecosystem with every new member.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section section-alt">
+          <div class="section-label">// NETWORK STATS</div>
+          <h2 class="section-title">Real momentum, measurable results</h2>
+          <div class="stats-grid">
+            <article class="stat-card">
+              <p class="stat-number">50K+</p>
+              <span class="stat-label">Active Miners</span>
+            </article>
+            <article class="stat-card">
+              <p class="stat-number">100M</p>
+              <span class="stat-label">VROX Tokens Mined</span>
+            </article>
+            <article class="stat-card">
+              <p class="stat-number">99.9%</p>
+              <span class="stat-label">Network Uptime</span>
+            </article>
+          </div>
+        </section>
+
+        <section id="features" class="section dark">
+          <div class="section-label">// FEATURES</div>
+          <h2 class="section-title">The Next Generation of Decentralized Networking</h2>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <img class="feature-card-icon" src="public/assets/icon-rocket.png" alt="Official Launch" />
+              <span class="feature-card-label">Official Launch</span>
+              <h3 class="feature-card-title">VROX Network is officially live.</h3>
+              <p class="feature-card-text">Our platform is operational, secure, and ready for the community to start mining and building the future together.</p>
+            </article>
+            <article class="feature-card">
+              <img class="feature-card-icon" src="public/assets/icon-zap.png" alt="Active Mining" />
+              <span class="feature-card-label">Active Mining</span>
+              <h3 class="feature-card-title">Mine VROX tokens directly.</h3>
+              <p class="feature-card-text">Zero fees, transparent rewards, and a mining experience built for community success.</p>
+            </article>
+            <article class="feature-card">
+              <img class="feature-card-icon" src="public/assets/icon-globe.png" alt="Global Network" />
+              <span class="feature-card-label">Global Network</span>
+              <h3 class="feature-card-title">Connect with miners worldwide.</h3>
+              <p class="feature-card-text">Grow a truly global decentralized ecosystem with every new participant.</p>
+            </article>
+            <article class="feature-card">
+              <img class="feature-card-icon" src="public/assets/icon-lock.png" alt="Military-Grade Security" />
+              <span class="feature-card-label">Military-Grade Security</span>
+              <h3 class="feature-card-title">End-to-end protection.</h3>
+              <p class="feature-card-text">Multi-signature wallets, encryption, and decentralized consensus for reliable safety.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="roadmap" class="section dark">
+          <div class="section-label">// ROADMAP</div>
+          <h2 class="section-title">The Journey Ahead</h2>
+          <div class="roadmap-grid">
+            <div class="roadmap-line"></div>
+            <article class="roadmap-item">
+              <span class="roadmap-badge">Phase 1</span>
+              <h3 class="roadmap-title">Phase 1</h3>
+              <ul class="roadmap-text">
+                <li>Launch (Q3 2026)</li>
+                <li>Official App Release</li>
+                <li>Cloud Mining Deployment</li>
+                <li>Community Expansion</li>
+              </ul>
+            </article>
+            <article class="roadmap-item">
+              <span class="roadmap-badge">Phase 2</span>
+              <h3 class="roadmap-title">Phase 2</h3>
+              <p class="roadmap-text">Coming Soon</p>
+            </article>
+            <article class="roadmap-item">
+              <span class="roadmap-badge">Phase 3</span>
+              <h3 class="roadmap-title">Phase 3</h3>
+              <p class="roadmap-text">Coming Soon</p>
+            </article>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="footer-inner page-container">
+            <div class="footer-grid">
+              <div class="footer-section">
+                <div class="footer-brand">
+                  <img src="public/assets/logo-vrox.png" alt="VROX Network" />
+                  <span>VROX</span>
+                </div>
+                <p class="footer-description">Decentralized cloud mining platform for the future of cryptocurrency.</p>
+                <div class="social-buttons">
+                  <a class="social-button" href="https://t.me/Vrox28" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                    <img src="public/assets/icon-telegram.png" alt="Telegram" />
+                  </a>
+                  <a class="social-button" href="https://x.com/VROX1228" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <img src="public/assets/icon-twitter.png" alt="Twitter" />
+                  </a>
+                </div>
+              </div>
+
+              <div class="footer-section">
+                <h4 class="footer-title">Company</h4>
+                <ul class="footer-links">
+                  <li><a href="index.html#about">About Us</a></li>
+                  <li><a href="/knowledge-hub/">Learn</a></li>
+                  <li><a href="/updates/">Updates</a></li>
+                  <li><a href="index.html#roadmap">Roadmap</a></li>
+                  <li><a href="/download/">Download App</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-section">
+                <h4 class="footer-title">Legal</h4>
+                <ul class="footer-links">
+                  <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                  <li><a href="/terms/">Terms of Service</a></li>
+                  <li><a href="app-ads.txt">App Ads</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-section">
+                <h4 class="footer-title">Community</h4>
+                <ul class="footer-links">
+                  <li><a href="https://t.me/Vrox28" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+                  <li><a href="https://x.com/VROX1228" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                  <li><a href="/support/">Support</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+              <p class="footer-copy">&copy; 2026 VROX Network Global. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      const navBar = document.getElementById('site-nav');
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const scrollIndicator = document.getElementById('scroll-indicator');
+      const navButtons = Array.from(document.querySelectorAll('[data-target]'));
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle('open');
+        mobileToggle.classList.toggle('open');
+      }
+
+      mobileToggle.addEventListener('click', toggleMobileMenu);
+      mobileMenu.addEventListener('click', (event) => {
+        if (event.target.matches('[data-target]')) {
+          toggleMobileMenu();
+        }
+      });
+
+      navButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const target = document.querySelector(button.dataset.target);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      function updateNavState() {
+        const sections = ['top', 'about', 'features', 'roadmap'];
+        const threshold = window.innerHeight * 0.35;
+
+        let activeId = 'top';
+        sections.forEach((id) => {
+          const section = document.getElementById(id);
+          if (section) {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= threshold) {
+              activeId = id;
+            }
+          }
+        });
+
+        document.querySelectorAll('.nav-links button, .mobile-menu button').forEach((button) => {
+          if (button.dataset.target === '#' + activeId) {
+            button.classList.add('active');
+          } else {
+            button.classList.remove('active');
+          }
+        });
+      }
+
+      function handleScrollEffects() {
+        const scrolled = window.scrollY > 100;
+        navBar.classList.toggle('scrolled', scrolled);
+        scrollIndicator.classList.toggle('hidden', window.scrollY > 220);
+        updateNavState();
+      }
+
+      window.addEventListener('scroll', handleScrollEffects, { passive: true });
+      window.addEventListener('resize', updateNavState);
+      document.addEventListener('DOMContentLoaded', () => {
+        handleScrollEffects();
+        document.getElementById('hero-cta').addEventListener('click', () => {
+          window.location.href = '/download/';
+        });
+      });
+    </script>
+  </body>
+</html>
+
+

@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #0B0817;
+    --bg-footer: #080614;
+    --bg-stats: #130D2A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9B9B9B;
+    --accent-teal: #00D9C0;
+    --accent-green: #4ADE80;
+    --accent-gold: #C5A55A;
+    --accent-gold-light: #F0D878;
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --card-surface: rgba(255, 255, 255, 0.03);
+
+    --font-display: 'DM Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(0, 217, 192, 0.3);
+    color: #FFFFFF;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .hero-title-char {
+    display: inline-block;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% 10px;
+  }
+
+  .stat-line-a {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-line-a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 0%, #4ADE80 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .stat-line-b {
+    position: absolute;
+    inset: 0;
+    color: #4ADE80;
+    opacity: 0;
+  }
+
+  .card-title-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .card-title-red {
+    position: absolute;
+    top: 0;
+    left: -2px;
+    color: transparent;
+    clip-path: inset(0 50% 0 0);
+    text-shadow: 2px 0 #ff0000;
+    opacity: 0;
+  }
+
+  .card-title-blue {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    color: transparent;
+    clip-path: inset(0 0 0 50%);
+    text-shadow: -2px 0 #0000ff;
+    opacity: 0;
+  }
+
+  .card-title-white {
+    position: relative;
+    color: #FFFFFF;
+  }
+}
+
+@layer utilities {
+  @keyframes pulse-scroll {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .animate-pulse-scroll {
+    animation: pulse-scroll 2s infinite ease-in-out;
+  }
+}
