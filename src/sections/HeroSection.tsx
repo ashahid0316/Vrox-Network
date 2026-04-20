@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import HeroCanvas from '@/components/HeroCanvas';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -128,6 +129,7 @@ export default function HeroSection() {
 
   return (
     <div ref={sectionRef}>
+        <HeroCanvas/>
       <div
         ref={pinRef}
         className="relative z-[1] flex flex-col items-center justify-center min-h-[100dvh] px-6"

@@ -135,20 +135,50 @@
         border: none;
       }
 
-      .mobile-menu-btn {
+      .mobile-toggle {
         display: none;
         flex-direction: column;
-        gap: 4px;
-        cursor: pointer;
-        padding: 8px;
+        gap: 6px;
+        width: 30px;
+        background: transparent;
+        border: none;
       }
 
-      .mobile-menu-btn span {
-        width: 24px;
-        height: 2px;
+      .mobile-toggle span {
+        width: 100%;
+        height: 3px;
         background: #FFFFFF;
-        transition: all 0.3s;
+        border-radius: 999px;
+        transition: transform 0.3s ease;
       }
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 950;
+        background: rgba(11, 8, 23, 0.98);
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-menu a {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+
 
       .article-hero {
         padding: 120px 24px 60px;
@@ -347,44 +377,121 @@
         padding: 60px 0 40px;
       }
 
-      .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 24px;
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
       }
 
-      .footer-logo {
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer-brand {
         display: flex;
         align-items: center;
         gap: 12px;
       }
 
-      .footer-links {
-        display: flex;
-        align-items: center;
-        gap: 32px;
+      .footer-brand img {
+        height: 40px;
+        width: auto;
       }
 
-      .footer-link {
+      .footer-brand span {
         font-family: 'JetBrains Mono', monospace;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        color: #FFFFFF;
+      }
+
+      .footer-description {
+        color: rgba(255, 255, 255, 0.7);
         font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: #9B9B9B;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .social-buttons {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .social-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        transition: all 0.2s;
         text-decoration: none;
+      }
+
+      .social-button:hover {
+        background: rgba(0, 217, 192, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .social-button img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .footer-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin: 0 0 16px 0;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .footer-links li {
+        margin: 0;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 14px;
         transition: color 0.2s;
       }
 
-      .footer-link:hover {
+      .footer-links a:hover {
         color: #00D9C0;
       }
 
-      .footer-copyright {
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding-top: 24px;
         text-align: center;
-        margin-top: 40px;
+      }
+
+      .footer-copy {
         color: rgba(255, 255, 255, 0.3);
-        font-size: 0.875rem;
+        font-size: 14px;
+        margin: 0;
       }
 
       @media (min-width: 768px) {
@@ -400,6 +507,10 @@
         .article-sidebar {
           grid-column: 2;
         }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          gap: 40px;
+        }
       }
 
       @media (max-width: 767px) {
@@ -407,7 +518,7 @@
           display: none;
         }
 
-        .mobile-menu-btn {
+        .mobile-toggle {
           display: flex;
         }
 
@@ -424,35 +535,41 @@
           text-align: center;
         }
 
-        .footer-links {
-          margin-top: 24px;
-        }
       }
     </style>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="nav">
-      <div class="nav-logo">
-        <img src="/assets/logo-vrox.png" alt="VROX Network" />
+      <a href="/" class="nav-logo">
+        <img src="../assets/logo-vrox.png" alt="VROX Network" />
         <span>VROX</span>
-      </div>
+      </a>
 
       <div class="nav-links">
-        <a href="//" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">Mine</a>
-        <a href="#features" class="nav-link">Whitepaper</a>
-        <a href="#roadmap" class="nav-link">Roadmap</a>
+        <a href="/" class="nav-link">Home</a>
+        <a href="/#about" class="nav-link">Mine</a>
+        <a href="/#features" class="nav-link">Whitepaper</a>
+        <a href="/#roadmap" class="nav-link">Roadmap</a>
         <a href="/knowledge-hub/" class="nav-link active">Learn</a>
         <a href="/support/" class="nav-link">Support</a>
-        <button class="nav-cta">Download App</button>
+        <a href="/download/" class="nav-cta">Download App</a>
       </div>
 
-      <button class="mobile-menu-btn">
+      <button class="mobile-toggle" id="mobile-toggle">
         <span></span>
         <span></span>
       </button>
     </nav>
+     <div class="mobile-menu" id="mobile-menu">
+        <a href="/">Home</a>
+        <a href="/#about">Mine</a>
+        <a href="/#features">Whitepaper</a>
+        <a href="/#roadmap">Roadmap</a>
+        <a href="/knowledge-hub/">Learn</a>
+        <a href="/support/">Support</a>
+        <a href="/download/" class="nav-action">Download App</a>
+      </div>
 
     <!-- Article Hero -->
     <section class="article-hero">
@@ -587,16 +704,16 @@ Stay Tuned. The future is decentralized
         <div class="footer-grid">
           <div class="footer-section">
             <div class="footer-brand">
-              <img src="/assets/logo-vrox.png" alt="VROX Network" />
+              <img src="../assets/logo-vrox.png" alt="VROX Network" />
               <span>VROX</span>
             </div>
             <p class="footer-description">Decentralized cloud mining platform for the future of cryptocurrency.</p>
             <div class="social-buttons">
               <a class="social-button" href="https://t.me/Vrox28" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-                <img src="/assets/icon-telegram.png" alt="Telegram" />
+                <img src="../assets/icon-telegram.png" alt="Telegram" />
               </a>
               <a class="social-button" href="https://x.com/VROX1228" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <img src="/assets/icon-twitter.png" alt="Twitter" />
+                <img src="../assets/icon-twitter.png" alt="Twitter" />
               </a>
             </div>
           </div>
@@ -638,15 +755,20 @@ Stay Tuned. The future is decentralized
     </footer>
 
     <script>
-      // Mobile menu functionality
-      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-      const navLinks = document.querySelector('.nav-links');
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-      if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', () => {
-          navLinks.classList.toggle('mobile-menu-open');
-        });
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle('open');
+        mobileToggle.classList.toggle('open');
       }
+
+      mobileToggle.addEventListener('click', toggleMobileMenu);
+      mobileMenu.addEventListener('click', (event) => {
+        if (event.target.matches('a')) {
+          toggleMobileMenu();
+        }
+      });
     </script>
   </body>
 </html>

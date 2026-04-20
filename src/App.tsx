@@ -1,33 +1,14 @@
 import { useLenisInit } from '@/hooks/useLenis';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import Navigation from '@/components/Navigation';
-import HeroCanvas from '@/components/HeroCanvas';
-import HeroSection from '@/sections/HeroSection';
-import AboutSection from '@/sections/AboutSection';
-import StarfieldDivider from '@/sections/StarfieldDivider';
-import StatsSection from '@/sections/StatsSection';
-import FeaturesSection from '@/sections/FeaturesSection';
-import RoadmapSection from '@/sections/RoadmapSection';
-import Footer from '@/sections/Footer';
 import KnowledgeHub from '@/pages/KnowledgeHub';
 import ArticleDetail from '@/pages/ArticleDetail';
+import Home from '@/pages/Home';
 
 const HomePage = () => {
   useLenisInit();
 
-  return (
-    <>
-      <HeroCanvas />
-      <div id="top" />
-      <HeroSection />
-      <AboutSection />
-      <StarfieldDivider />
-      <StatsSection />
-      <FeaturesSection />
-      <RoadmapSection />
-      <Footer />
-    </>
-  );
+  return <Home />;
 };
 
 function App() {
