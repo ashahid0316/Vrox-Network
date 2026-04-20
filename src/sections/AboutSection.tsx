@@ -7,17 +7,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FEATURES = [
   {
-    icon: '/assets/icon-pickaxe.png',
+    icon: './assets/icon-pickaxe.png',
     label: 'Active Mining',
     sublabel: 'Start earning VROX tokens today',
   },
   {
-    icon: '/assets/icon-shield.png',
+    icon: './assets/icon-shield.png',
     label: 'Security First',
     sublabel: 'Decentralized & encrypted',
   },
   {
-    icon: '/assets/icon-users.png',
+    icon: './assets/icon-users.png',
     label: 'Community Growth',
     sublabel: 'Join thousands of miners worldwide',
   },

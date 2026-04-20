@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img
-              src="/assets/logo-vrox.png"
+              src="./assets/logo-vrox.png"
               alt="VROX Network"
               className="h-10 w-auto"
             />
@@ -20,11 +20,11 @@ export default function Footer() {
           {/* Social Links */}
           <div className="flex items-center gap-5">
             <SocialButton
-              icon="/assets/icon-telegram.png"
+              icon="./assets/icon-telegram.png"
               alt="Telegram"
             />
             <SocialButton
-              icon="/assets/icon-twitter.png"
+              icon="./assets/icon-twitter.png"
               alt="Twitter"
             />
             <a

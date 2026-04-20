@@ -73,7 +73,7 @@ export default function Navigation() {
           className="flex items-center gap-3 cursor-pointer"
         >
           <img
-            src="/assets/logo-vrox.png"
+            src="./assets/logo-vrox.png"
             alt="VROX Network"
             className="h-10 w-auto"
           />

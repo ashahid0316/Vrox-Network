@@ -7,25 +7,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CARDS = [
   {
-    icon: '/assets/icon-rocket.png',
+    icon: './assets/icon-rocket.png',
     title: 'Official Launch',
     description:
       'VROX Network is officially live. Our platform is operational, secure, and ready for the community to start mining and building the decentralized future together.',
   },
   {
-    icon: '/assets/icon-zap.png',
+    icon: './assets/icon-zap.png',
     title: 'Active Mining',
     description:
       'Our native mining engine is running at full capacity. Mine VROX tokens directly from your device with zero fees and transparent reward distribution.',
   },
   {
-    icon: '/assets/icon-globe.png',
+    icon: './assets/icon-globe.png',
     title: 'Global Network',
     description:
       'Connect with miners across 100+ countries. The VROX network grows stronger with every new participant, creating a truly global decentralized ecosystem.',
   },
   {
-    icon: '/assets/icon-lock.png',
+    icon: './assets/icon-lock.png',
     title: 'Military-Grade Security',
     description:
       'End-to-end encryption, multi-signature wallets, and decentralized consensus mechanisms ensure your assets and data remain secure at all times.',
