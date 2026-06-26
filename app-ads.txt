@@ -164,3 +164,6 @@ programmaticx.ai, 84448, RESELLER, b42d42eb28400efa
 xandr.com, 17779, RESELLER
 rubiconproject.com, 24600, RESELLER, 0bfd66d529a55807
 admanmedia.com, 2242, RESELLER
+odeeo.io, 118848844, RESELLER, 36cfd73091d5c3fc
+smartadserver.com, 4525, RESELLER, 060d053dcf45cbf3
+rubiconproject.com, 24084, RESELLER, 0bfd66d529a55807
