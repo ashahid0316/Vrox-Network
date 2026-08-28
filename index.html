@@ -795,10 +795,6 @@
           <span>VROX Network</span>
         </div>
         <div class="nav-links" id="desktop-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
-          <button data-target="#top" itemprop="name">Home</button>
-          <button data-target="#about" itemprop="name">Mine</button>
-          <button data-target="#features" itemprop="name">Whitepaper</button>
-          <button data-target="#roadmap" itemprop="name">Roadmap</button>
           <a href="/knowledge-hub/" itemprop="url"><span itemprop="name">Learn</span></a>
           <a href="/support/" itemprop="url"><span itemprop="name">Support</span></a>
           <a href="/download/" class="nav-action" itemprop="url"><span itemprop="name">Download App</span></a>
@@ -810,12 +806,7 @@
       </nav>
 
       <div class="mobile-menu" id="mobile-menu">
-        <button data-target="#top">Home</button>
-        <button data-target="#about">Mine</button>
-        <button data-target="#features">Whitepaper</button>
-        <button data-target="#roadmap">Roadmap</button>
         <a href="/knowledge-hub/">Learn</a>
-
         <a href="/support/">Support</a>
         <a href="/download/" class="nav-action">Download App</a>
       </div>
@@ -890,11 +881,11 @@
           <h2 class="section-title">Real momentum, measurable results</h2>
           <div class="stats-grid">
             <article class="stat-card">
-              <p class="stat-number">50K+</p>
+              <p class="stat-number">10K+</p>
               <span class="stat-label">Active Miners</span>
             </article>
             <article class="stat-card">
-              <p class="stat-number">100M</p>
+              <p class="stat-number">1Million+</p>
               <span class="stat-label">VROX Tokens Mined</span>
             </article>
             <article class="stat-card">
@@ -959,6 +950,56 @@
               <span class="roadmap-badge">Phase 3</span>
               <h3 class="roadmap-title">Phase 3</h3>
               <p class="roadmap-text">Coming Soon</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="tokenomics" class="section section-alt">
+          <div class="section-label">// TOKENOMICS</div>
+          <h2 class="section-title">Supply & Distribution</h2>
+          <p class="section-copy">
+            Total Supply: 50 Billion VROX. Our tokenomics model is designed for long-term sustainability, community growth, and ecosystem stability.
+          </p>
+
+          <div class="feature-grid" style="margin-top: 64px;">
+            <!-- Community -->
+            <article class="feature-card">
+              <div style="height: 4px; background: #7B1FA2; border-radius: 2px; width: 60px;"></div>
+              <span class="feature-card-label" style="color: #7B1FA2;">60% (30 Billion)</span>
+              <h3 class="feature-card-title">Community & Mining</h3>
+              <p class="feature-card-text">Empowering users through mining rewards, airdrops, referrals, tasks, and mini-games.</p>
+            </article>
+
+            <!-- Team -->
+            <article class="feature-card">
+              <div style="height: 4px; background: #1976D2; border-radius: 2px; width: 60px;"></div>
+              <span class="feature-card-label" style="color: #1976D2;">15% (7.5 Billion)</span>
+              <h3 class="feature-card-title">Team & Advisors</h3>
+              <p class="feature-card-text">4-year vesting with a 12-month cliff. Aligned for long-term platform integrity.</p>
+            </article>
+
+            <!-- Ecosystem -->
+            <article class="feature-card">
+              <div style="height: 4px; background: #0097A7; border-radius: 2px; width: 60px;"></div>
+              <span class="feature-card-label" style="color: #0097A7;">15% (7.5 Billion)</span>
+              <h3 class="feature-card-title">Ecosystem & Dev</h3>
+              <p class="feature-card-text">Driving innovation, partnerships, and continuous technical platform growth.</p>
+            </article>
+
+            <!-- Liquidity -->
+            <article class="feature-card">
+              <div style="height: 4px; background: #FBC02D; border-radius: 2px; width: 60px;"></div>
+              <span class="feature-card-label" style="color: #FBC02D;">5% (2.5 Billion)</span>
+              <h3 class="feature-card-title">Liquidity & CEX</h3>
+              <p class="feature-card-text">Reserved for exchange listings and ensuring a strong market presence.</p>
+            </article>
+
+            <!-- Marketing -->
+            <article class="feature-card">
+              <div style="height: 4px; background: #D32F2F; border-radius: 2px; width: 60px;"></div>
+              <span class="feature-card-label" style="color: #D32F2F;">5% (2.5 Billion)</span>
+              <h3 class="feature-card-title">Marketing</h3>
+              <p class="feature-card-text">Scaling globally through strategic collaborations and community outreach.</p>
             </article>
           </div>
         </section>
@@ -1048,39 +1089,13 @@
         });
       });
 
-      function updateNavState() {
-        const sections = ['top', 'about', 'features', 'roadmap'];
-        const threshold = window.innerHeight * 0.35;
-
-        let activeId = 'top';
-        sections.forEach((id) => {
-          const section = document.getElementById(id);
-          if (section) {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= threshold) {
-              activeId = id;
-            }
-          }
-        });
-
-        document.querySelectorAll('.nav-links button, .mobile-menu button').forEach((button) => {
-          if (button.dataset.target === '#' + activeId) {
-            button.classList.add('active');
-          } else {
-            button.classList.remove('active');
-          }
-        });
-      }
-
       function handleScrollEffects() {
         const scrolled = window.scrollY > 100;
         navBar.classList.toggle('scrolled', scrolled);
         scrollIndicator.classList.toggle('hidden', window.scrollY > 220);
-        updateNavState();
       }
 
       window.addEventListener('scroll', handleScrollEffects, { passive: true });
-      window.addEventListener('resize', updateNavState);
       document.addEventListener('DOMContentLoaded', () => {
         handleScrollEffects();
         document.getElementById('hero-cta').addEventListener('click', () => {
