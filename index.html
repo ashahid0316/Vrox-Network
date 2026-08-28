@@ -15,7 +15,39 @@
     <!-- Primary Meta Tags -->
     <title>Vrox Network | Empowering the Decentralized Future</title>
     <meta name="title" content="Vrox Network | Empowering the Decentralized Future">
-    <meta name="description" content="Secure. Transparent. Community-driven. Join the Vrox Network ecosystem to mine VROX tokens and be an early adopter of the decentralized future.">
+    <meta name="description" content="Join Vrox Network, the leading decentralized cloud mining platform. Mine VROX tokens, explore the Knowledge Hub, and join the future of Web3. Download the app now.">
+
+    <!-- JSON-LD Structured Data for Sitelinks -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Vrox Network",
+      "url": "https://vroxnetwork.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://vroxnetwork.com/knowledge-hub/#search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "hasPart": [
+        {
+          "@type": "WebPage",
+          "name": "Download App",
+          "url": "https://vroxnetwork.com/download/"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Knowledge Hub",
+          "url": "https://vroxnetwork.com/knowledge-hub/"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Support",
+          "url": "https://vroxnetwork.com/support/"
+        }
+      ]
+    }
+    </script>
     <meta name="keywords" content="VROX, Vrox Network, Crypto Mining, Decentralized Future, Blockchain, Secure Mining, VROX Token, Early Adopter">
 
     <!-- Open Graph / Facebook -->
@@ -762,15 +794,14 @@
           <img src="/public/assets/logo-vrox.png" alt="VROX Network" />
           <span>VROX Network</span>
         </div>
-        <div class="nav-links" id="desktop-nav">
-          <button data-target="#top">Home</button>
-          <button data-target="#about">Mine</button>
-          <button data-target="#features">Whitepaper</button>
-          <button data-target="#roadmap">Roadmap</button>
-          <a href="/knowledge-hub/">Learn</a>
-
-          <a href="/support/">Support</a>
-          <a href="/download/" class="nav-action">Download App</a>
+        <div class="nav-links" id="desktop-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+          <button data-target="#top" itemprop="name">Home</button>
+          <button data-target="#about" itemprop="name">Mine</button>
+          <button data-target="#features" itemprop="name">Whitepaper</button>
+          <button data-target="#roadmap" itemprop="name">Roadmap</button>
+          <a href="/knowledge-hub/" itemprop="url"><span itemprop="name">Learn</span></a>
+          <a href="/support/" itemprop="url"><span itemprop="name">Support</span></a>
+          <a href="/download/" class="nav-action" itemprop="url"><span itemprop="name">Download App</span></a>
         </div>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Open menu">
           <span></span>
