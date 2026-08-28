@@ -257,6 +257,32 @@
         pointer-events: auto;
       }
 
+      .hero-logo-container {
+        width: clamp(160px, 25vw, 220px);
+        height: clamp(160px, 25vw, 220px);
+        margin: 0 auto 40px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0, 217, 192, 0.08) 0%, transparent 70%);
+        border: 2px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 0 60px rgba(0, 217, 192, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.02);
+        animation: logo-float 4s ease-in-out infinite;
+      }
+
+      @keyframes logo-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .hero-logo-container img {
+        width: 75%;
+        height: auto;
+        filter: drop-shadow(0 0 25px rgba(0, 217, 192, 0.3));
+      }
+
       .mobile-menu button {
         font-family: 'DM Sans', sans-serif;
         font-size: 1.9rem;
@@ -814,6 +840,9 @@
       <main class="page-container">
         <section id="top" class="hero-section">
           <div class="hero-inner">
+            <div class="hero-logo-container">
+              <img src="/public/assets/logo-vrox.png" alt="VROX Logo" />
+            </div>
             <h1 class="hero-title">
               <span>V</span><span>R</span><span>O</span><span>X</span><br />
               <span>N</span><span>E</span><span>T</span><span>W</span><span>O</span><span>R</span><span>K</span>
@@ -956,9 +985,9 @@
 
         <section id="tokenomics" class="section section-alt">
           <div class="page-container">
-            <div class="section-label" style="text-align: center;">// TOKENOMICS</div>
-            <h2 class="section-title" style="text-align: center;">VROX Supply & Distribution</h2>
-            <p class="section-copy" style="text-align: center; margin-left: auto; margin-right: auto;">
+            <div class="section-label">// TOKENOMICS</div>
+            <h2 class="section-title">VROX Supply & Distribution</h2>
+            <p class="section-copy">
               Built for long-term sustainability. Designed with a true community-first vision.
             </p>
 
