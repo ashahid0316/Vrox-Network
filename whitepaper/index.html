@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whitepaper - VROX Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: #0B0817;
+        color: #FFFFFF;
+        line-height: 1.6;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #0B0817;
+        color: #FFFFFF;
+        overflow-x: hidden;
+      }
+
+      .page-shell {
+        position: relative;
+        min-height: 100vh;
+      }
+
+      .page-shell::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(circle at 20% 10%, rgba(0, 217, 192, 0.1) 0, transparent 20%),
+          radial-gradient(circle at 80% 15%, rgba(74, 222, 128, 0.08) 0, transparent 15%),
+          radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.04) 0, transparent 25%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      .nav-bar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        padding: 0 24px;
+        background: rgba(11, 8, 23, 0.92);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+      }
+
+      .nav-brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .nav-brand span {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-link {
+        font-size: 14px;
+        font-weight: 500;
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
+        transition: color 0.2s;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .nav-link:hover, .nav-link.active {
+        color: #00D9C0;
+      }
+
+      /* Whitepaper Document Styling */
+      .document-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 120px 24px 80px;
+        position: relative;
+      }
+
+      .whitepaper-page {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 60px;
+        margin-bottom: 40px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      }
+
+      @media (max-width: 768px) {
+        .whitepaper-page {
+          padding: 30px;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+
+      .wp-header {
+        text-align: center;
+        margin-bottom: 80px;
+        border-bottom: 1px solid rgba(0, 217, 192, 0.3);
+        padding-bottom: 40px;
+      }
+
+      .wp-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0;
+        background: linear-gradient(135deg, #FFFFFF, #9B9B9B);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .wp-version {
+        font-family: 'JetBrains Mono', monospace;
+        color: #00D9C0;
+        font-size: 0.9rem;
+        margin-top: 10px;
+      }
+
+      .wp-section {
+        margin-bottom: 60px;
+      }
+
+      .wp-section h2 {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.8rem;
+        color: #00D9C0;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .wp-section h2::before {
+        content: '';
+        width: 4px;
+        height: 24px;
+        background: #00D9C0;
+        border-radius: 2px;
+      }
+
+      .wp-section h3 {
+        font-size: 1.3rem;
+        color: #FFFFFF;
+        margin-top: 32px;
+        margin-bottom: 16px;
+      }
+
+      .wp-content p {
+        color: #D1D5DB;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .wp-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+
+      .wp-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 12px;
+        color: #D1D5DB;
+      }
+
+      .wp-list li::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: #00D9C0;
+      }
+
+      .highlight-box {
+        background: rgba(0, 217, 192, 0.05);
+        border-left: 4px solid #00D9C0;
+        padding: 24px;
+        border-radius: 0 8px 8px 0;
+        margin: 32px 0;
+      }
+
+      .toc {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 30px;
+        border-radius: 8px;
+        margin-bottom: 60px;
+      }
+
+      .toc h3 {
+        margin-top: 0 !important;
+        font-size: 1.1rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #9B9B9B !important;
+      }
+
+      .toc-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      @media (max-width: 600px) {
+        .toc-links {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .toc-link {
+        color: #D1D5DB;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+      }
+
+      .toc-link:hover {
+        color: #00D9C0;
+      }
+
+      .footer {
+        padding: 60px 0 40px;
+        background: rgba(0,0,0,0.3);
+        border-top: 1px solid rgba(255,255,255,0.06);
+        text-align: center;
+      }
+
+      .footer-copy {
+        color: rgba(255,255,255,0.35);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <nav class="nav-bar">
+        <a href="/" class="nav-brand">
+          <img src="/public/assets/logo-vrox.png" alt="VROX Network Logo" />
+          <span>VROX Network</span>
+        </a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/whitepaper/" class="nav-link active">Whitepaper</a>
+          <a href="/knowledge-hub/" class="nav-link">Learn</a>
+          <a href="/download/" class="nav-link">Download</a>
+          <a href="/support/" class="nav-link">Support</a>
+        </div>
+      </nav>
+
+      <main class="document-container">
+        <!-- Document Start -->
+        <article class="whitepaper-page">
+          <header class="wp-header">
+            <h1 class="wp-title">VROX NETWORK</h1>
+            <p class="wp-version">Official Whitepaper v1.0 | Built on Solana</p>
+          </header>
+
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <div class="toc-links">
+              <a href="#introduction" class="toc-link">1. Introduction</a>
+              <a href="#problem" class="toc-link">2. The Problem</a>
+              <a href="#solution" class="toc-link">3. The Vrox Solution</a>
+              <a href="#technology" class="toc-link">4. Technical Infrastructure</a>
+              <a href="#tokenomics" class="toc-link">5. Tokenomics</a>
+              <a href="#deflationary" class="toc-link">6. Deflationary Model</a>
+              <a href="#kyc" class="toc-link">7. Pioneer Verification (KYC)</a>
+              <a href="#roadmap" class="toc-link">8. Milestone Roadmap</a>
+              <a href="#security" class="toc-link">9. Security & Privacy</a>
+              <a href="#legal" class="toc-link">10. Legal Disclaimer</a>
+            </div>
+          </div>
+
+          <!-- Section 1 -->
+          <section id="introduction" class="wp-section">
+            <h2>Introduction</h2>
+            <div class="wp-content">
+              <p>Vrox Network is a pioneering decentralized ecosystem designed to bring the power of blockchain technology to the masses through an accessible and energy-efficient mobile cloud mining platform. Our vision is to democratize the cryptocurrency landscape, allowing anyone with a smartphone to participate in the decentralized future without the traditional barriers to entry.</p>
+              <p>Built on the high-performance Solana Blockchain, Vrox Network leverages speed, scalability, and near-zero transaction costs to create a seamless environment for the next generation of digital pioneers. We are not just an app; we are building a global community owned and secured by its participants.</p>
+            </div>
+          </section>
+
+          <!-- Section 2 -->
+          <section id="problem" class="wp-section">
+            <h2>The Problem</h2>
+            <div class="wp-content">
+              <p>The current state of cryptocurrency mining is plagued by several critical challenges that prevent wide-scale adoption:</p>
+              <ul class="wp-list">
+                <li><strong>Hardware Barrier:</strong> Traditional mining requires expensive ASICs or high-end GPUs, making it inaccessible to the average individual.</li>
+                <li><strong>Energy Consumption:</strong> Proof-of-Work (PoW) mining consumes massive amounts of electricity, leading to environmental concerns and high operational costs.</li>
+                <li><strong>Centralization:</strong> Mining power is increasingly concentrated in large industrial server farms, moving away from the original vision of a decentralized, peer-to-peer network.</li>
+                <li><strong>Complexity:</strong> Setting up and maintaining a mining node requires advanced technical knowledge, creating a steep learning curve for newcomers.</li>
+              </ul>
+            </div>
+          </section>
+        </article>
+
+        <article class="whitepaper-page">
+          <!-- Section 3 -->
+          <section id="solution" class="wp-section">
+            <h2>The Vrox Solution</h2>
+            <div class="wp-content">
+              <p>Vrox Network solves these issues through its proprietary <strong>Mobile Cloud Mining</strong> technology. By moving the heavy computational work to a secure cloud infrastructure, we enable users to "mine" $VROX tokens directly from their mobile devices with zero impact on battery life or hardware performance.</p>
+              <div class="highlight-box">
+                <p style="margin: 0; font-weight: 600; color: #00D9C0;">"Our goal is to make mining as simple as a single tap, transforming every smartphone into a gateway for financial empowerment."</p>
+              </div>
+              <p>Through our milestone-driven distribution model, we ensure that $VROX tokens are spread fairly across a massive, active community before the token enters the open market. This community-first approach builds the necessary network effect for long-term ecosystem success.</p>
+            </div>
+          </section>
+
+          <!-- Section 4 -->
+          <section id="technology" class="wp-section">
+            <h2>Technical Infrastructure</h2>
+            <div class="wp-content">
+              <h3>Why Solana?</h3>
+              <p>Vrox Network has chosen the <strong>Solana Blockchain</strong> as its foundation. Solana is world-renowned for its incredible speed (65,000+ transactions per second) and extremely low fees (averaging less than $0.00025). This ensures that when Vrox transitions to mainnet, users can enjoy lightning-fast transfers and withdrawals without losing their rewards to high gas fees.</p>
+              <h3>SPL Token Standard</h3>
+              <p>$VROX will be implemented as an SPL token, the native standard of the Solana ecosystem. This provides instant compatibility with all major Solana wallets (Phantom, Solflare) and seamless integration with the massive Solana DeFi and DEX landscape.</p>
+              <h3>Cloud Sync & Security</h3>
+              <p>Our backend utilizes high-availability cloud services integrated with secure database management (Supabase) to ensure real-time balance synchronization across all devices. Your progress is encrypted and backed up, ensuring your mined tokens are safe and always accessible.</p>
+            </div>
+          </section>
+        </article>
+
+        <article class="whitepaper-page">
+          <!-- Section 5 -->
+          <section id="tokenomics" class="wp-section">
+            <h2>Tokenomics</h2>
+            <div class="wp-content">
+              <p>The $VROX token economy is built on principles of scarcity and community value. We have capped the total supply to ensure a healthy market dynamic upon launch.</p>
+              <div class="highlight-box">
+                <h3 style="margin-top: 0;">Total Supply: 20,000,000,000 $VROX</h3>
+              </div>
+              <h3>Allocation Breakdown:</h3>
+              <ul class="wp-list">
+                <li><strong>60% Community & Mining Rewards (12 Billion):</strong> Dedicated entirely to our Pioneers through cloud mining, airdrops, referrals, and mini-games.</li>
+                <li><strong>15% Team & Advisors (3 Billion):</strong> Subject to a strict 4-year vesting schedule with a 12-month cliff to ensure team alignment with project success.</li>
+                <li><strong>15% Ecosystem & Development (3 Billion):</strong> Reserved for technical upgrades, smart contract audits, and ecosystem growth.</li>
+                <li><strong>5% Liquidity & Exchange Listings (1 Billion):</strong> To ensure stable trading pairs across major CEX and DEX platforms.</li>
+                <li><strong>5% Marketing & Partnerships (1 Billion):</strong> For global outreach and strategic collaborations within the Solana ecosystem.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section id="deflationary" class="wp-section">
+            <h2>Deflationary Model & Burning</h2>
+            <div class="wp-content">
+              <p>To support long-term price stability, Vrox Network implements a multi-layered deflationary strategy:</p>
+              <ul class="wp-list">
+                <li><strong>Unmined Supply Burn:</strong> Our goal is to have 60% of the community supply mined by our Pioneers. Upon the Token Generation Event (TGE), any unmined portions of the allocated community supply will be permanently burned, significantly reducing the total supply.</li>
+                <li><strong>Revenue-Based Buyback:</strong> A portion of the project's revenue (from in-app features and games) will be used to buy back $VROX from the market and send it to a dead address.</li>
+                <li><strong>Transaction Burn:</strong> Once on mainnet, a percentage of every transaction fee on our platform will be automatically burned.</li>
+              </ul>
+            </div>
+          </section>
+        </article>
+
+        <article class="whitepaper-page">
+          <!-- Section 7 -->
+          <section id="kyc" class="wp-section">
+            <h2>Pioneer Verification (KYC)</h2>
+            <div class="wp-content">
+              <p>In adherence to global regulatory standards and to protect our community from bot manipulation, Vrox Network will implement a <strong>Mandatory KYC (Know Your Customer)</strong> verification process.</p>
+              <div class="highlight-box">
+                <p style="margin: 0; font-weight: 600;">KYC must be completed by all Pioneers before they are eligible to withdraw $VROX to external Solana addresses.</p>
+              </div>
+              <p>This verification occurs in Phase 3 of our roadmap, just before the Token Generation Event. This ensures that every token is held by a real, verified person, maintaining the integrity of our decentralized network and preventing bad actors from gaining unfair advantages.</p>
+            </div>
+          </section>
+
+          <!-- Section 8 -->
+          <section id="roadmap" class="wp-section">
+            <h2>Milestone Roadmap</h2>
+            <div class="wp-content">
+              <p>Our roadmap is strictly event-driven. We do not set arbitrary dates; instead, we focus on achieving the necessary community and technical milestones for a successful launch.</p>
+
+              <h3>Phase 1: Foundation</h3>
+              <ul class="wp-list">
+                <li>Official Android App Release on Play Store</li>
+                <li>Activation of Cloud Mining Infrastructure</li>
+                <li>Initial Community Onboarding (Global Pioneers)</li>
+                <li><strong>Target: 50,000+ Active Users</strong></li>
+              </ul>
+
+              <h3>Phase 2: Growth & Utility</h3>
+              <ul class="wp-list">
+                <li>Development of VROX Non-Custodial Wallet</li>
+                <li>Implementation of Wallet UI and external sync</li>
+                <li>Expansion of Ecosystem Rewards & Mini-Games</li>
+                <li><strong>Target: 200,000+ Active Users</strong></li>
+              </ul>
+
+              <h3>Phase 3: Network Maturation</h3>
+              <ul class="wp-list">
+                <li>Solana Smart Contract Development & Deployment</li>
+                <li>Infrastructure and Security Audit by Professional Firms</li>
+                <li><strong>Mandatory KYC Portal Launch</strong></li>
+                <li>Pioneer verification and anti-bot cleanup</li>
+              </ul>
+
+              <h3>Phase 4: TGE & Mainnet Launch</h3>
+              <ul class="wp-list">
+                <li>$VROX Token Generation Event (TGE) on Solana</li>
+                <li>Massive Burn of all unmined supply</li>
+                <li>Official Listing on Solana DEXs (Raydium, Jupiter)</li>
+                <li>CEX Listing and Enablement of External Withdrawals</li>
+              </ul>
+            </div>
+          </section>
+        </article>
+
+        <article class="whitepaper-page">
+          <!-- Section 9 -->
+          <section id="security" class="wp-section">
+            <h2>Security & Data Privacy</h2>
+            <div class="wp-content">
+              <p>Security is our top priority. We implement military-grade encryption for all user data and transaction records. By choosing Solana, we also benefit from its robust, battle-tested consensus mechanism (Proof of History). User privacy is maintained through our decentralized approach, where your personal information is used strictly for verification and never sold to third parties.</p>
+            </div>
+          </section>
+
+          <!-- Section 10 -->
+          <section id="legal" class="wp-section">
+            <h2>Legal Disclaimer</h2>
+            <div class="wp-content" style="font-size: 0.9rem; color: #9B9B9B;">
+              <p>The Vrox Network Whitepaper is for informational purposes only and does not constitute financial, legal, or investment advice. Participating in cryptocurrency projects involves high risk. Mined $VROX tokens currently reside within a test environment and have no guaranteed market value until the mainnet launch and exchange listing.</p>
+              <p>The Vrox Network team reserves the right to modify the roadmap, tokenomics, or technical specifications based on community feedback, technical requirements, or regulatory changes to protect the long-term viability of the ecosystem.</p>
+            </div>
+          </section>
+
+          <footer style="text-align: center; margin-top: 40px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #00D9C0;">
+            © 2026 Vrox Network Global. All Rights Reserved.
+          </footer>
+        </article>
+      </main>
+
+      <footer class="footer">
+        <div class="page-container">
+          <p class="footer-copy">&copy; 2026 VROX Network Global. Empowering the decentralized future.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Smooth scroll for TOC links
+      document.querySelectorAll('.toc-link').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                  behavior: 'smooth'
+              });
+          });
+      });
+    </script>
+  </body>
+</html>
