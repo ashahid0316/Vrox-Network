@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Support - VROX Network</title>
+    <title>Support Center | VROX Network - FAQ & Help</title>
+    <meta name="description" content="Get help with VROX Network. Official FAQs on Solana mining, mandatory KYC, 20B supply, token burns, and technical support.">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Inter:wght@400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <style>
       :root {
         color-scheme: dark;
@@ -31,52 +32,22 @@
         color: #FFFFFF;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      button,
-      a {
-        font: inherit;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      button {
-        border: none;
-        background: none;
-        cursor: pointer;
       }
 
       .page-shell {
         position: relative;
         min-height: 100vh;
-        overflow: hidden;
       }
 
       .page-shell::before {
         content: '';
-        position: absolute;
+        position: fixed;
         inset: 0;
-        background-image: radial-gradient(circle at 20% 10%, rgba(0, 217, 192, 0.18) 0, transparent 18%),
-          radial-gradient(circle at 80% 15%, rgba(74, 222, 128, 0.14) 0, transparent 15%),
-          radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.08) 0, transparent 25%);
-        opacity: 0.65;
+        background-image: radial-gradient(circle at 20% 10%, rgba(0, 217, 192, 0.15) 0, transparent 20%),
+          radial-gradient(circle at 80% 15%, rgba(74, 222, 128, 0.1) 0, transparent 15%),
+          radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.05) 0, transparent 25%);
+        opacity: 0.8;
         pointer-events: none;
-      }
-
-      .page-container {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
       }
 
       .nav-bar {
@@ -97,6 +68,7 @@
         display: inline-flex;
         align-items: center;
         gap: 14px;
+        text-decoration: none;
       }
 
       .nav-brand img {
@@ -112,243 +84,251 @@
       }
 
       .nav-links {
-        display: flex;
+        display: none;
         align-items: center;
         gap: 32px;
       }
 
       .nav-link {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 500;
-        color: rgba(255,255,255,0.8);
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
         transition: color 0.2s;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
 
       .nav-link:hover {
-        color: #FFFFFF;
+        color: #00D9C0;
       }
 
-      .content {
-        padding-top: 120px;
-        padding-bottom: 80px;
+      .nav-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        border-radius: 99px;
+        background: linear-gradient(135deg, #4ADE80 0%, #00D9C0 100%);
+        color: #0B0817;
+        font-weight: 600;
+        font-size: 13px;
       }
 
-      .content h1 {
+      .mobile-toggle {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 30px;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      .mobile-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: #FFFFFF;
+        border-radius: 999px;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 950;
+        background: rgba(11, 8, 23, 0.98);
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-menu a {
         font-family: 'DM Sans', sans-serif;
-        font-size: 48px;
+        font-size: 1.8rem;
         font-weight: 700;
-        margin-bottom: 32px;
+        color: #FFFFFF;
+        text-decoration: none;
+      }
+
+      /* Content Area */
+      .support-hero {
+        padding: 160px 24px 80px;
         text-align: center;
       }
 
-      .content p {
-        font-size: 18px;
-        margin-bottom: 24px;
-        text-align: center;
+      .hero-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        font-weight: 700;
+        margin: 0 0 16px;
+        letter-spacing: -0.02em;
       }
 
-      .faq {
-        max-width: 800px;
-        margin: 0 auto;
+      .hero-subtitle {
+        font-family: 'JetBrains Mono', monospace;
+        color: #00D9C0;
+        font-size: 0.9rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .faq-container {
+        max-width: 900px;
+        margin: 0 auto 100px;
+        padding: 0 24px;
+      }
+
+      .faq-category {
         margin-bottom: 60px;
       }
 
+      .category-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.6rem;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .category-title::before {
+        content: '';
+        width: 4px;
+        height: 24px;
+        background: #00D9C0;
+        border-radius: 2px;
+      }
+
       .faq-item {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
         margin-bottom: 16px;
         overflow: hidden;
-        background: rgba(255, 255, 255, 0.02);
+        transition: border-color 0.3s;
+      }
+
+      .faq-item:hover {
+        border-color: rgba(0, 217, 192, 0.3);
       }
 
       .faq-question {
         width: 100%;
-        padding: 20px;
+        padding: 24px;
         background: none;
         color: #FFFFFF;
         text-align: left;
-        font-size: 18px;
+        font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
         border: none;
         outline: none;
         position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .faq-question::after {
-        content: '▼';
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
+        content: '+';
+        font-size: 1.5rem;
+        color: #00D9C0;
         transition: transform 0.3s;
-        font-size: 14px;
       }
 
       .faq-item[open] .faq-question::after {
-        transform: translateY(-50%) rotate(180deg);
+        transform: rotate(45deg);
       }
 
       .faq-answer {
-        padding: 0 20px 20px;
-        color: rgba(255, 255, 255, 0.8);
-        line-height: 1.6;
+        padding: 0 24px 24px;
+        color: #9B9B9B;
+        line-height: 1.7;
+        font-size: 1rem;
+      }
+
+      .faq-answer strong {
+        color: #FFFFFF;
       }
 
       .contact-section {
+        background: rgba(0, 217, 192, 0.03);
+        border: 1px solid rgba(0, 217, 192, 0.1);
+        border-radius: 32px;
+        padding: 60px 40px;
         text-align: center;
-        margin-bottom: 40px;
+        max-width: 800px;
+        margin: 0 auto 120px;
       }
 
-      .contact-section p {
+      .contact-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+
+      .contact-text {
+        color: #9B9B9B;
         margin-bottom: 32px;
-        font-size: 16px;
-        color: rgba(255, 255, 255, 0.7);
       }
 
-      .contact-button {
-        display: inline-block;
-        padding: 12px 24px;
-        background: linear-gradient(135deg, #4ADE80, #00D9C0);
-        color: #0B0817;
-        font-weight: 600;
-        border-radius: 8px;
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .contact-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        padding: 24px;
+        border-radius: 16px;
         text-decoration: none;
         transition: transform 0.2s;
       }
 
-      .contact-button:hover {
-        transform: translateY(-2px);
+      .contact-card:hover {
+        transform: translateY(-5px);
+        border-color: #00D9C0;
       }
 
-      .footer {
-        background: #080614;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 60px 0 40px;
-      }
-
-      .footer-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 40px;
-        margin-bottom: 40px;
-      }
-
-      .footer-section {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .footer-brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .footer-brand img {
-        height: 40px;
-        width: auto;
-      }
-
-      .footer-brand span {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 15px;
-        font-weight: 500;
-        letter-spacing: 0.2em;
-        color: #FFFFFF;
-      }
-
-      .footer-description {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 14px;
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      .social-buttons {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .social-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        transition: all 0.2s;
-        text-decoration: none;
-      }
-
-      .social-button:hover {
-        background: rgba(0, 217, 192, 0.2);
-        transform: translateY(-2px);
-      }
-
-      .social-button img {
-        width: 24px;
-        height: 24px;
-      }
-
-      .footer-title {
-        font-family: 'DM Sans', sans-serif;
-        font-size: 18px;
-        font-weight: 600;
-        color: #FFFFFF;
-        margin: 0 0 16px 0;
-      }
-
-      .footer-links {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .footer-links li {
-        margin: 0;
-      }
-
-      .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        font-size: 14px;
-        transition: color 0.2s;
-      }
-
-      .footer-links a:hover {
+      .contact-card h4 {
+        margin: 0 0 8px;
         color: #00D9C0;
       }
 
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding-top: 24px;
+      .contact-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #9B9B9B;
+      }
+
+      .footer {
+        padding: 80px 0 40px;
+        border-top: 1px solid rgba(255,255,255,0.06);
         text-align: center;
       }
 
       .footer-copy {
-        color: rgba(255, 255, 255, 0.3);
-        font-size: 14px;
-        margin: 0;
+        color: rgba(255,255,255,0.35);
+        font-size: 0.9rem;
       }
 
       @media (min-width: 768px) {
-        .footer-grid {
-          grid-template-columns: 1fr 1fr 1fr 1fr;
-          gap: 40px;
-        }
+        .nav-links { display: flex; }
+        .mobile-toggle { display: none; }
       }
     </style>
   </head>
@@ -363,139 +343,222 @@
           <a href="/" class="nav-link">Home</a>
           <a href="/whitepaper/" class="nav-link">Whitepaper</a>
           <a href="/knowledge-hub/" class="nav-link">Learn</a>
-          <a href="/download/" class="nav-link">Download</a>
           <a href="/support/" class="nav-link">Support</a>
+          <a href="/download/" class="nav-action">Download App</a>
         </div>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open menu">
+          <span></span>
+          <span style="margin-top: 6px;"></span>
+        </button>
       </nav>
-      <main class="page-container content">
-        <h1>Support</h1>
-        <p>Frequently Asked Questions</p>
-        
-        <div class="faq">
-          <details class="faq-item">
-            <summary class="faq-question">Which blockchain is VROX built on?</summary>
-            <div class="faq-answer">
-              Vrox Network is built on the high-performance <strong>Solana Blockchain</strong>, providing lightning-fast transactions and near-zero fees for our global community.
-            </div>
-          </details>
 
-          <details class="faq-item">
-            <summary class="faq-question">What is the total supply of $VROX?</summary>
-            <div class="faq-answer">
-              The total supply is fixed at <strong>20,000,000,000 (20 Billion) $VROX</strong>, strictly capped to ensure scarcity and long-term value retention.
-            </div>
-          </details>
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="/">Home</a>
+        <a href="/whitepaper/">Whitepaper</a>
+        <a href="/knowledge-hub/">Learn</a>
+        <a href="/support/">Support</a>
+        <a href="/download/">Download App</a>
+      </div>
 
-          <details class="faq-item">
-            <summary class="faq-question">Is KYC mandatory for withdrawals?</summary>
-            <div class="faq-answer">
-              Yes, mandatory KYC (Know Your Customer) verification is required for all withdrawals to ensure a bot-free environment and maintain the integrity of our decentralized network.
-            </div>
-          </details>
+      <main>
+        <section class="support-hero">
+          <p class="hero-subtitle">VROX Help Center</p>
+          <h1 class="hero-title">How can we help?</h1>
+        </section>
 
-          <details class="faq-item">
-            <summary class="faq-question">What is the "Verify & Purge" document policy?</summary>
-            <div class="faq-answer">
-              We protect your privacy. Once your identity is successfully verified for Solana withdrawals, all uploaded ID images and sensitive documents are <strong>permanently deleted</strong> from our secure servers.
-            </div>
-          </details>
+        <div class="faq-container">
 
-          <details class="faq-item">
-            <summary class="faq-question">What happens to unmined tokens?</summary>
-            <div class="faq-answer">
-              Upon the Token Generation Event (TGE), all remaining unmined supply from the community reward pool will be <strong>Immediately and Permanently Burned</strong>.
-            </div>
-          </details>
+          <!-- Category: Project & Blockchain -->
+          <div class="faq-category">
+            <h2 class="category-title">Project & Blockchain</h2>
 
-          <details class="faq-item">
-            <summary class="faq-question">Can I withdraw to any Solana address?</summary>
-            <div class="faq-answer">
-              Yes! Once withdrawals are enabled in Phase 4 of our roadmap, you will be able to transfer your VROX to any external Solana address, including CEXs, DEXs, or private wallets.
-            </div>
-          </details>
+            <details class="faq-item">
+              <summary class="faq-question">Which blockchain is VROX built on?</summary>
+              <div class="faq-answer">
+                Vrox Network is built on the high-performance <strong>Solana Blockchain</strong>. We chose Solana for its incredible speed (65,000+ TPS) and near-zero transaction fees, ensuring a seamless experience for our Pioneers.
+              </div>
+            </details>
 
-          <details class="faq-item">
-            <summary class="faq-question">How to start mining?</summary>
-            <div class="faq-answer">
-              Go to the Mine screen in the app and tap 'START MINING'. Your session will last for 24 hours, after which you need to restart it.
-            </div>
-          </details>
+            <details class="faq-item">
+              <summary class="faq-question">What is the total supply of $VROX?</summary>
+              <div class="faq-answer">
+                The total supply is strictly fixed at <strong>20,000,000,000 (20 Billion) $VROX</strong>. This cap ensures scarcity and supports long-term value within our ecosystem.
+              </div>
+            </details>
 
-          <details class="faq-item">
-            <summary class="faq-question">Is Vrox Network mining free?</summary>
-            <div class="faq-answer">
-              Yes, cloud mining on Vrox Network is completely free and doesn't consume your phone's hardware resources or battery.
-            </div>
-          </details>
+            <details class="faq-item">
+              <summary class="faq-question">What is the "Massive Token Burn" protocol?</summary>
+              <div class="faq-answer">
+                Upon our Mainnet launch and Token Generation Event (TGE), <strong>all unmined tokens</strong> remaining in the community pool will be permanently burned. This effectively reduces supply and rewards early active miners.
+              </div>
+            </details>
 
-          <details class="faq-item">
-            <summary class="faq-question">Are there forced ads in Vrox Network?</summary>
-            <div class="faq-answer">
-              No! We are strictly against intrusive advertisements. Vrox Network is a <strong>Forced-Ad Free Zone</strong>. Any advertisement you see is 100% voluntary and rewards you with extra bonuses.
-            </div>
-          </details>
+            <details class="faq-item">
+              <summary class="faq-question">Is the team dumping tokens?</summary>
+              <div class="faq-answer">
+                No. To ensure project stability, the 15% Team allocation is subject to a <strong>12-month cliff</strong> and <strong>4-year linear vesting</strong>. The team cannot sell tokens during the critical early stages of the project.
+              </div>
+            </details>
+          </div>
+
+          <!-- Category: Mining & Earnings -->
+          <div class="faq-category">
+            <h2 class="category-title">Mining & Earnings</h2>
+
+            <details class="faq-item">
+              <summary class="faq-question">How to start mining?</summary>
+              <div class="faq-answer">
+                Download the app, register with your Google account, and tap the <strong>'MINE'</strong> button. Your session will last for 24 hours, after which you simply need to restart it with one tap.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Does mining drain my battery?</summary>
+              <div class="faq-answer">
+                No. Vrox Network uses <strong>Proprietary Cloud Mining Virtualization</strong>. All heavy work happens on our secure servers, meaning zero impact on your battery, CPU, or hardware.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">How can I boost my mining rate?</summary>
+              <div class="faq-answer">
+                You can boost your rate in three ways: 1) Invite friends for a <strong>25% permanent boost</strong> per active ref. 2) Use the 'Boost' feature for a temporary 10% multiplier. 3) Complete Quests and play mini-games.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">What are Referral Elite rewards?</summary>
+              <div class="faq-answer">
+                Top community builders can participate in our <strong>Referral Campaigns</strong> to win real USDT rewards and exclusive Pioneer status badges.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">What is the "Early Bird" status?</summary>
+              <div class="faq-answer">
+                The first 10,000 members to join Vrox Network receive the <strong>Early Bird Adoptor</strong> tag, which grants exclusive access to future rewards and specialized community features.
+              </div>
+            </details>
+          </div>
+
+          <!-- Category: Security & KYC -->
+          <div class="faq-category">
+            <h2 class="category-title">Security & KYC</h2>
+
+            <details class="faq-item">
+              <summary class="faq-question">Is KYC mandatory for withdrawals?</summary>
+              <div class="faq-answer">
+                Yes. <strong>Mandatory KYC verification</strong> is required before any withdrawal to external Solana addresses. This prevents bot manipulation and ensures a fair, human-only network.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">What is the "Verify & Purge" document policy?</summary>
+              <div class="faq-answer">
+                We prioritize your data sovereignty. Once your identity is successfully verified, all uploaded ID images and sensitive documents are <strong>permanently deleted</strong> from our servers within 24 hours.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">How is my data secured?</summary>
+              <div class="faq-answer">
+                We use <strong>Supabase</strong> with military-grade <strong>AES-256 encryption</strong> for all user data. Your progress is synced across devices and backed up in a secure, isolated cloud environment.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Are there forced ads in the app?</summary>
+              <div class="faq-answer">
+                No. Vrox Network is a <strong>Forced-Ad Free Zone</strong>. We never interrupt your experience with unexpected pop-ups. Any ad you see is 100% voluntary and grants you extra VROX bonuses.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Can I use multiple devices?</summary>
+              <div class="faq-answer">
+                No. To maintain fairness, our policy is <strong>One Account Per Person</strong>. Using cloning apps or multiple devices to mine will result in a permanent ban and loss of all tokens.
+              </div>
+            </details>
+          </div>
+
+          <!-- Category: Withdrawals & Roadmap -->
+          <div class="faq-category">
+            <h2 class="category-title">Withdrawals & Roadmap</h2>
+
+            <details class="faq-item">
+              <summary class="faq-question">When can I withdraw my tokens?</summary>
+              <div class="faq-answer">
+                Withdrawals will be enabled in <strong>Phase 4</strong> of our milestone-based roadmap, following the Token Generation Event (TGE) and Solana Mainnet launch.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Where can I withdraw to?</summary>
+              <div class="faq-answer">
+                You will be able to withdraw your $VROX to <strong>any external Solana address</strong>, including major exchanges (CEX), decentralized exchanges (DEX), or private wallets like Phantom.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">How is the token price calculated?</summary>
+              <div class="faq-answer">
+                The price is dynamic and increases based on the <strong>total tokens mined globally</strong>. As our community grows and supply is distributed, the scarcity model drives potential value.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">What if I lose my phone?</summary>
+              <div class="faq-answer">
+                Simply download the app on your new device and sign in with your <strong>verified Google account</strong>. Your balance and mining progress are cloud-synced and will be recovered instantly.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">How do I report a technical bug?</summary>
+              <div class="faq-answer">
+                You can use the <strong>'Report a Problem'</strong> card in the app's Support screen or email us directly at support@vroxnetwork.com with a screenshot of the issue.
+              </div>
+            </details>
+          </div>
+
         </div>
-        
-        <div class="contact-section">
-          <p>If you couldn't find the answer to your question in our FAQs, feel free to reach out to us. We're here to help!</p>
-          <a href="mailto:support@vroxnetwork.com?subject=Support%20Request%20-%20Vrox%20Network" class="contact-button">Contact Us via Email</a>
-        </div>
+
+        <section class="contact-section">
+          <h2 class="contact-title">Still need help?</h2>
+          <p class="contact-text">Our dedicated support team is ready to assist you Pioneers 24/7.</p>
+          <div class="contact-grid">
+            <a href="mailto:support@vroxnetwork.com" class="contact-card">
+              <h4>Email Support</h4>
+              <p>Direct assistance via support@vroxnetwork.com</p>
+            </a>
+            <a href="https://t.me/Vrox28" target="_blank" class="contact-card">
+              <h4>Telegram Community</h4>
+              <p>Join our group for real-time community help.</p>
+            </a>
+            <a href="https://x.com/vroxofficial" target="_blank" class="contact-card">
+              <h4>X (Twitter)</h4>
+              <p>Follow us for latest announcements and news.</p>
+            </a>
+          </div>
+        </section>
       </main>
 
       <footer class="footer">
-        <div class="footer-inner page-container">
-          <div class="footer-grid">
-            <div class="footer-section">
-              <div class="footer-brand">
-                <img src="/public/assets/logo-vrox.png" alt="VROX Network" />
-                <span>VROX</span>
-              </div>
-              <p class="footer-description">Decentralized cloud mining platform for the future of cryptocurrency.</p>
-              <div class="social-buttons">
-                <a class="social-button" href="https://t.me/Vrox28" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-                  <img src="/public/assets/icon-telegram.png" alt="Telegram" />
-                </a>
-                <a class="social-button" href="https://x.com/vroxofficial" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-9.56-6.637 9.56H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644Z"/></svg>
-                </a>
-              </div>
-            </div>
-
-            <div class="footer-section">
-              <h4 class="footer-title">Company</h4>
-              <ul class="footer-links">
-                <li><a href="/#about">About Us</a></li>
-                <li><a href="/knowledge-hub/">Learn</a></li>
-
-                <li><a href="/#roadmap">Roadmap</a></li>
-                <li><a href="/download/">Download App</a></li>
-              </ul>
-            </div>
-
-            <div class="footer-section">
-              <h4 class="footer-title">Legal</h4>
-              <ul class="footer-links">
-                <li><a href="/privacy-policy/">Privacy Policy</a></li>
-                <li><a href="/terms/">Terms of Service</a></li>
-                <li><a href="/app-ads.txt">App Ads</a></li>
-              </ul>
-            </div>
-
-            <div class="footer-section">
-              <h4 class="footer-title">Community</h4>
-              <ul class="footer-links">
-                <li><a href="https://t.me/Vrox28" target="_blank" rel="noopener noreferrer">Telegram</a></li>
-                <li><a href="https://x.com/VROX1228" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>
-                <li><a href="/support/">Support</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="footer-bottom">
-            <p class="footer-copy">&copy; 2026 VROX Network Global. All rights reserved.</p>
-          </div>
+        <div class="page-container">
+          <p class="footer-copy">&copy; 2026 VROX Network Global. Empowering the decentralized future on Solana.</p>
         </div>
       </footer>
     </div>
+
+    <script>
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+      mobileMenu.addEventListener('click', (e) => {
+        if (event.target.matches('a')) mobileMenu.classList.remove('open');
+      });
+    </script>
   </body>
 </html>
