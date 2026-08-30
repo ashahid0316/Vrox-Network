@@ -1,4 +1,3 @@
-
 {
   "hosting": {
     "public": "public",
@@ -8,6 +7,10 @@
       "**/node_modules/**"
     ],
     "rewrites": [
+      {
+        "source": "/whitepaper",
+        "destination": "/whitepaper/index.html"
+      },
       {
         "source": "/download",
         "destination": "/download/index.html"
@@ -27,14 +30,6 @@
       {
         "source": "/terms",
         "destination": "/terms/index.html"
-      },
-      {
-        "source": "/updates",
-        "destination": "/updates/index.html"
-      },
-      {
-        "source": "/what-is-blockchain",
-        "destination": "/what-is-blockchain/index.html"
       }
     ],
     "headers": [
@@ -58,43 +53,6 @@
             "value": "upgrade-insecure-requests"
           }
         ]
-      }
-    ],
-    "redirects": [
-      {
-        "source": "/download.html",
-        "destination": "/download/",
-        "type": 301
-      },
-      {
-        "source": "/knowledge-hub.html",
-        "destination": "/knowledge-hub/",
-        "type": 301
-      },
-      {
-        "source": "/privacy-policy.html",
-        "destination": "/privacy-policy/",
-        "type": 301
-      },
-      {
-        "source": "/support.html",
-        "destination": "/support/",
-        "type": 301
-      },
-      {
-        "source": "/terms.html",
-        "destination": "/terms/",
-        "type": 301
-      },
-      {
-        "source": "/updates.html",
-        "destination": "/updates/",
-        "type": 301
-      },
-      {
-        "source": "/what-is-blockchain.html",
-        "destination": "/what-is-blockchain/",
-        "type": 301
       }
     ]
   }
