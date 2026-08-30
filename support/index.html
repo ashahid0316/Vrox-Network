@@ -164,24 +164,55 @@
 
       /* Content Area */
       .support-hero {
-        padding: 160px 24px 80px;
+        padding: 160px 24px 60px;
         text-align: center;
+      }
+
+      .support-logo-container {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 24px;
+        border-radius: 50%;
+        background: #0B0817;
+        border: 2px solid rgba(0, 217, 192, 0.15);
+        box-shadow: 0 0 40px rgba(0, 217, 192, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .support-logo-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .hero-title {
         font-family: 'DM Sans', sans-serif;
-        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        font-size: clamp(2.2rem, 6vw, 3.5rem);
         font-weight: 700;
-        margin: 0 0 16px;
+        margin: 0 0 12px;
         letter-spacing: -0.02em;
+        text-transform: uppercase;
       }
 
       .hero-subtitle {
         font-family: 'JetBrains Mono', monospace;
         color: #00D9C0;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         letter-spacing: 0.15em;
         text-transform: uppercase;
+        margin-bottom: 24px;
+        display: block;
+      }
+
+      .hero-description {
+        max-width: 700px;
+        margin: 0 auto 40px;
+        font-size: 1.05rem;
+        color: #9B9B9B;
+        line-height: 1.6;
       }
 
       .faq-container {
@@ -362,8 +393,16 @@
 
       <main>
         <section class="support-hero">
-          <p class="hero-subtitle">VROX Help Center</p>
-          <h1 class="hero-title">How can we help?</h1>
+          <div class="support-logo-container">
+            <img src="/public/assets/logo-vrox.png" alt="VROX Logo" />
+          </div>
+          <h1 class="hero-title">VROX NETWORK</h1>
+          <span class="hero-subtitle">Official Support Center</span>
+          <p class="hero-description">
+            Vrox Network is a high-performance decentralized platform built on the Solana Blockchain.
+            Our mission is to democratize crypto earning through secure cloud mining, military-grade security,
+            and a community-first approach. Need help? You're in the right place.
+          </p>
         </section>
 
         <div class="faq-container">
