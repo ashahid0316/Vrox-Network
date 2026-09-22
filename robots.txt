@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /updates
+Disallow: /updates/
 
 Sitemap: https://vroxnetwork.com/sitemap.xml

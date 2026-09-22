@@ -13,6 +13,9 @@
     <meta name="theme-color" content="#0B0817">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://vroxnetwork.com/">
+
     <!-- Primary Meta Tags -->
     <title>VROX Network | The Premier Ecosystem Built on Solana</title>
     <meta name="title" content="VROX Network | The Premier Ecosystem Built on Solana">
@@ -22,38 +25,74 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Vrox Network",
-      "url": "https://vroxnetwork.com/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://vroxnetwork.com/knowledge-hub/#search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      },
-      "hasPart": [
+      "@graph": [
         {
-          "@type": "WebPage",
-          "name": "Official Whitepaper",
-          "description": "Technical documentation, tokenomics (20B supply), and Solana roadmap.",
-          "url": "https://vroxnetwork.com/whitepaper/"
+          "@type": "WebSite",
+          "@id": "https://vroxnetwork.com/#website",
+          "url": "https://vroxnetwork.com/",
+          "name": "Vrox Network",
+          "description": "The Premier Ecosystem Built on Solana",
+          "hasPart": [
+            {
+              "@type": "WebPage",
+              "name": "Download VROX Network",
+              "description": "Download the official VROX Network app to start mining $VROX tokens with zero battery drain.",
+              "url": "https://vroxnetwork.com/download/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Official Whitepaper",
+              "description": "Technical documentation, tokenomics (20B supply), and Solana roadmap.",
+              "url": "https://vroxnetwork.com/whitepaper/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Privacy Policy",
+              "description": "Privacy policy and data protection terms for VROX Network users.",
+              "url": "https://vroxnetwork.com/privacy-policy/"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Terms and Conditions",
+              "description": "Official terms of service and user agreement for VROX Network.",
+              "url": "https://vroxnetwork.com/terms/"
+            }
+          ]
         },
         {
-          "@type": "WebPage",
-          "name": "Download VROX Network",
-          "description": "Start mining $VROX tokens with zero battery drain. Built on Solana.",
-          "url": "https://vroxnetwork.com/download/"
-        },
-        {
-          "@type": "WebPage",
-          "name": "Support & FAQ",
-          "description": "Get help with mining, KYC, and account security.",
-          "url": "https://vroxnetwork.com/support/"
-        },
-        {
-          "@type": "WebPage",
-          "name": "Knowledge Hub",
-          "description": "Master the world of Web3, blockchain, and crypto earning.",
-          "url": "https://vroxnetwork.com/knowledge-hub/"
+          "@type": "ItemList",
+          "@id": "https://vroxnetwork.com/#sitelinks",
+          "name": "VROX Network Main Navigation",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "Download",
+              "description": "Download VROX Network mobile application",
+              "url": "https://vroxnetwork.com/download/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Whitepaper",
+              "description": "Read VROX Network Official Whitepaper",
+              "url": "https://vroxnetwork.com/whitepaper/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "Privacy Policy",
+              "description": "Read VROX Network Privacy Policy",
+              "url": "https://vroxnetwork.com/privacy-policy/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Terms and Conditions",
+              "description": "Read VROX Network Terms and Conditions",
+              "url": "https://vroxnetwork.com/terms/"
+            }
+          ]
         }
       ]
     }
