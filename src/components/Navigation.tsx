@@ -9,7 +9,7 @@ const NAV_LINKS: NavLink[] = [
   { label: 'Mine', target: '#about' },
   { label: 'Whitepaper', target: '#features' },
   { label: 'Roadmap', target: '#roadmap' },
-  { label: 'Learn', href: '/knowledge-hub/' },
+  { label: 'Learn', href: '/learn' },
   { label: 'Support', href: '/support/' },
 ];
 
