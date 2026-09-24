@@ -35,6 +35,9 @@ export default function ArticleDetail() {
   // Get related articles (for sidebar)
   const relatedArticles = articles.filter((a) => a.id !== article.id).slice(0, 5);
 
+  // Split content into paragraphs/sections
+  const contentParagraphs = article.content.split('\n\n');
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Article Header */}
@@ -68,24 +71,53 @@ export default function ArticleDetail() {
           <div className="lg:col-span-2">
             <Card className="border border-gray-800 bg-gray-900/50 p-8">
               <div className="prose prose-invert max-w-none space-y-6 text-gray-300">
-                <p className="text-lg leading-relaxed">{article.excerpt}</p>
+                <p className="text-lg leading-relaxed font-medium text-gray-200">{article.excerpt}</p>
 
                 {/* Main article content area */}
-                <div className="border-t border-gray-800 pt-8">
-                  <div className="space-y-4 text-base leading-relaxed">
-                    <p>{article.content}</p>
+                <div className="border-t border-gray-800 pt-8 space-y-6">
+                  {contentParagraphs.map((para, index) => {
+                    // Check if paragraph is a section header (e.g. "1. What is Restaking?")
+                    const isHeader = /^\d+\.\s/.test(para);
+                    if (isHeader) {
+                      return (
+                        <h2 key={index} className="text-2xl font-bold text-white mt-8 mb-4">
+                          {para}
+                        </h2>
+                      );
+                    }
+                    return (
+                      <p key={index} className="text-base leading-relaxed text-gray-300">
+                        {para}
+                      </p>
+                    );
+                  })}
+                </div>
 
-                    {/* Placeholder for full article */}
-                    <div className="rounded-lg border border-gray-800 bg-gray-800/30 p-6 italic text-gray-400">
-                      Full article content coming soon... ({article.wordCount} words total)
-                    </div>
-                  </div>
+                {/* Colorful Highlight & Summary Card (matching the mobile app design) */}
+                <div className="my-8 rounded-xl bg-gradient-to-r from-purple-900/80 to-indigo-900/80 p-6 border border-purple-500/50 shadow-xl">
+                  <h3 className="text-xl font-bold text-white mb-3">Key Highlights &amp; Summary</h3>
+                  <ul className="space-y-2 text-sm text-gray-200">
+                    <li className="flex items-start">
+                      <span className="mr-2 text-yellow-400 font-bold">•</span>
+                      <span><strong>Maximum Capital Efficiency:</strong> Reuse staked assets across multiple decentralized protocols.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 text-yellow-400 font-bold">•</span>
+                      <span><strong>Shared Security:</strong> Bootstrap AVSs instantly without separate validator pools.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 text-yellow-400 font-bold">•</span>
+                      <span><strong>Balanced Participation:</strong> Weigh slashing risks against enhanced passive yield opportunities.</span>
+                    </li>
+                  </ul>
                 </div>
 
                 {/* Author Info */}
                 <div className="border-t border-gray-800 pt-8">
                   <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600" />
+                    <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold text-white shadow-md">
+                      VN
+                    </div>
                     <div>
                       <p className="font-semibold text-white">{article.author}</p>
                       <p className="text-sm text-gray-400">Published on {article.date}</p>
@@ -106,10 +138,10 @@ export default function ArticleDetail() {
                   • Introduction
                 </a>
                 <a href="#main" className="block text-gray-400 hover:text-blue-400 transition-colors">
-                  • Main Content
+                  • Main Content &amp; AVSs
                 </a>
                 <a href="#conclusion" className="block text-gray-400 hover:text-blue-400 transition-colors">
-                  • Conclusion
+                  • Key Highlights &amp; Summary
                 </a>
               </div>
             </Card>
