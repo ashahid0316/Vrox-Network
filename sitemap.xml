@@ -3,35 +3,42 @@
   <!-- Main Home Page -->
   <url>
     <loc>https://vroxnetwork.com/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- 1. Download Page -->
   <url>
     <loc>https://vroxnetwork.com/download/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 2. Official Whitepaper Page -->
   <url>
     <loc>https://vroxnetwork.com/whitepaper/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 3. Privacy Policy Page -->
   <url>
     <loc>https://vroxnetwork.com/privacy-policy/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
 
   <!-- 4. Terms and Conditions Page -->
   <url>
     <loc>https://vroxnetwork.com/terms/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- 5. Knowledge Hub Page -->
+  <url>
+    <loc>https://vroxnetwork.com/knowledge-hub/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>
