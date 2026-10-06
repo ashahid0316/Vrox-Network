@@ -30,6 +30,18 @@
       {
         "source": "/terms",
         "destination": "/terms/index.html"
+      },
+      {
+        "source": "/learn",
+        "destination": "/knowledge-hub/index.html"
+      },
+      {
+        "source": "/learn/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ],
     "headers": [

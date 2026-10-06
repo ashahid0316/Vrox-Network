@@ -19,6 +19,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/learn" element={<KnowledgeHub />} />
         <Route path="/learn/:slug" element={<ArticleDetail />} />
+        <Route path="/knowledge-hub" element={<KnowledgeHub />} />
+        <Route path="/knowledge-hub/:slug" element={<ArticleDetail />} />
       </Routes>
     </BrowserRouter>
   );

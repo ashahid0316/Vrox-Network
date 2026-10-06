@@ -3,35 +3,35 @@
   <!-- Main Home Page -->
   <url>
     <loc>https://vroxnetwork.com/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- 1. Download Page -->
   <url>
     <loc>https://vroxnetwork.com/download/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 2. Official Whitepaper Page -->
   <url>
     <loc>https://vroxnetwork.com/whitepaper/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 3. Privacy Policy Page -->
   <url>
     <loc>https://vroxnetwork.com/privacy-policy/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <priority>0.6</priority>
   </url>
 
   <!-- 4. Terms and Conditions Page -->
   <url>
     <loc>https://vroxnetwork.com/terms/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <priority>0.6</priority>
   </url>
 
@@ -42,9 +42,21 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- 6. Learn Route Alias -->
+  <url>
+    <loc>https://vroxnetwork.com/learn</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Featured Top Article: DePIN & Autonomous AI Agents -->
   <url>
     <loc>https://vroxnetwork.com/learn/depin-and-autonomous-ai-agents</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://vroxnetwork.com/knowledge-hub/depin-and-autonomous-ai-agents</loc>
     <lastmod>2026-10-06</lastmod>
     <priority>0.9</priority>
   </url>
