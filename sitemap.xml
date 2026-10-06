@@ -35,7 +35,14 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- 5. Knowledge Hub Page -->
+  <!-- 5. Support Page -->
+  <url>
+    <loc>https://vroxnetwork.com/support/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 6. Knowledge Hub Page -->
   <url>
     <loc>https://vroxnetwork.com/knowledge-hub/</loc>
     <lastmod>2026-10-06</lastmod>
