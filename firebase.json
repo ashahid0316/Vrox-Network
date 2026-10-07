@@ -20,6 +20,10 @@
         "destination": "/knowledge-hub/index.html"
       },
       {
+        "source": "/knowledge-hub/**",
+        "destination": "/knowledge-hub/index.html"
+      },
+      {
         "source": "/privacy-policy",
         "destination": "/privacy-policy/index.html"
       },
